@@ -1,9 +1,10 @@
 body, html {
-    height:100%;
+    height:auto;
     margin:0;
     background-color: #6B818C;
     
 }
+/* ----dark-mode settings/styles */
 .dark-mode{
     
         background-color: #35605A;
@@ -19,7 +20,7 @@ body, html {
         color:rgb(255, 255, 255);
     }
     
-    #button_container button a{
+    /* #button_container button a{
         color:#6B818C;
     }
     #button_container button a::after {
@@ -27,7 +28,7 @@ body, html {
     }
     #button_container button a:hover{
         color:white;
-    }
+    } */
   
     input[type="text"],input[type="color"],input[type="date"],input[type="tel"],input[type="email"]{
         background-color: #6B818C;
@@ -71,30 +72,23 @@ main {
     flex-direction: column;
 }
 
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
 
-#header a {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-}
+/* My logos hover */
 #header a:hover {
     text-decoration: none;
     color: rgb(238, 107, 31);
     transition: 0.75s ease;
     box-shadow: 0px 2px 0px 0px #ff6200;
 }
+/* my logos styling */
 #logo {
     border-radius: 5px;
     height: 50px;
     width: 50px;
     margin-right: 20px;
 }
-
-.navbar2 {
+/* navbar styling */
+nav{
     
     position: sticky;
     top: 0;
@@ -104,48 +98,184 @@ main {
     background-color: #b2b3b4;
     z-index: 1000;
 }
-
-.navbar2 button {
-    position:sticky;
-    border-style: none;
-    background: none;
-    margin-right: 20px;
-}
-.navbar2 button a {
-    display: block;
+/* styling my main navbar buttons */
+nav a{
     text-decoration: none;
-    color: black;
-    position: sticky;
-    padding: 0 5px;
+    color:black;
+    display:flex;
 }
-#button_container {
-    position:sticky;
+/* sidebar hovering style */
+.sidebar a:hover{
+    color: white;
+    background-color: gray;
+}
+/* navbar ul styling (buttons) */
+
+/* sidebar list styling */
+
+/* sidebar list link styling */
+.sidebar a{
+    width:100%;
+    height:100%;
+    padding:20px 50px;
+    text-decoration: none;
+    display: flex;
+    align-items: flex-start;
+    color: black;
+}
+/* My side bar styling */
+.sidebar{
+    list-style: none;
+    position: fixed;
+    top:0;
+    right:0;
+    height:100vh;
+    width:100%;
+    z-index: 999;
+    background-color: rgba(107, 110, 255, 0.341);
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0 10px rgba( 0, 0 ,0, 0.1);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     
-    max-width: 400px;
-    margin-top: 8px;
-    font-size: 20px;
-    font-family: cursive;
-    letter-spacing: 10px;
-    /* display: flex; */
-    flex-direction: row; 
+}
+/* the animation of the icon of the sidebar (toggler) */
+#listbar{
+    
+    animation:sidebaranimation ease 2s;
+}
+svg#listybar{
+    margin-left:-150px;
+}
+/* the sidebar's list should be 100% wide */
+.sidebar li{
+    width:100%;
+    padding-bottom:20px;
+}
+.batn a{
+    text-decoration: none;
+    color:#3498db;
+}
+.batn{
+    margin-left:20px;
+    padding:15px 40px;
+    border:none;
+    outline:none;
+    color:#FFF;
+    cursor:pointer;
+    position:relative;
+    z-index: 0;
+    border-radius: 12px;
+}
+.batn::after{
+    content:"";
+    z-index: -1;
+    position: absolute;
+    width:100%;
+    height:100%;
+    background-color: #333;
+    left:0;
+    top:0;
+    border-radius:10px;
+    
+}
+.batn::before{
+    content:"";
+    background:linear-gradient(45deg, #FF0000, #FF7300, #FFFB00, 
+    #48FF00, #00FFD5, #002BFF, #FF00C8, #FF0000);
+    position: absolute;
+    top:-2px;
+    left:-2px;
+    background-size:600%;
+    z-index: -1;
+    width:100%;
+    height:100%;
+    filter:blur(8px);
+    transition:opacity .3s ease-in-out;
+    border-radius:10px;
+    opacity:0;
+    animation:glowing 20s linear infinite;
+
+}
+.batn:hover::before{
+    opacity:1;
+}
+@keyframes glowing {
+    0%{background-position: 0 0;}
+    50%{background-position: 400% 0;}
+    100%{background-position: 0 0;}
+}
+/* create a @ in which when the width exceeds 800px the items with class hideOnMobile will disappear */
+@media (max-width: 917px){
+    .batn{
+        display:none;
+    }
+}
+/* create a @ in which when the width exceeds 800px the items with class hideOnBigScreen will disappear */
+@media (min-width:917px){
+    .batn{
+        display:none;
+    }
 }
 
-#button_container.column {
-    flex-direction: column; 
+/* an animation for the icon of the sidebar */
+@keyframes sidebaranimation{
+    from{
+        transform:translateY(-200px)
+    }
+    to{
+        transform:translateY(0px)
+    }
 }
-ntainer button a::after {
-    content: '';
-    position: absolute;
-    background-color: #ff6200;
-    height: 2px;
-    width: 0%;
-    left: 0;
-    bottom: -1px;
-    transition: 0.75s ease;
+/* Styling my main buttons (menu) */
+/* .button_container  a{
+    margin-top: 8px;
+    color:#ff6200;
+    padding:10px;
+    border-radius: 0 20px;
+    right:0;
+    font-size: 20px;
+    font-family: sans-serif ;
+    letter-spacing: 5px;
+    display: flex; 
+    flex-direction: row; 
+    margin-left:20px;
+    display:flex;
+    
+} */
+
+
+ul.button_container{
+    display:flex;
+    margin-left:200px;
+    list-style: none;
+    justify-content:center;
+    
 }
-#button_container button a:hover::after {
-    width: 100%;
+
+
+.mainmenu{
+    background-color: rgba(0, 0, 0, 0.585);
+    backdrop-filter: blur(10px);
+    padding:20px 20px;
+    margin-bottom:px;
+    display: flex;
+    justify-content: center;
+    position:sticky;
+    align-items: center;
+
 }
+
+.mainmenu.column{
+    flex-direction: column;
+}
+
+/* creating a margin so that there is enough space between my buttons */
+
+/* hovering effects for my main buttons */
+/* FIX THIS!!! */
 .btn_visit {    
     box-shadow: 0px 2px darkblue;
     transition: 0.75s ease;    
@@ -184,15 +314,16 @@ form button {
     padding: 10px 20px;
 }
 
-form button a {
+/* form button a {
     text-decoration: none;
     color: red;
     position: relative; 
     display: inline-block; 
-}
+} */
+ /* Table add and sort buttons */
 form .btn-group button {
     position: relative;
-    color: #00120B;
+    color: #102946;
     animation-name: taskbutton;
     animation-duration: 1s;
     animation-timing-function: ease-in;
@@ -314,7 +445,7 @@ footer img {
 header{
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 10000;
 }
 #btntop {
     
@@ -331,7 +462,8 @@ header{
     cursor:default;
     content:'Back to the top ->'
 }
-#button_container button a::after {
+/* FIX THIS */
+/* #button_container  a::after {
     content: '';
     position: absolute;
     background-color: #ff6200;
@@ -341,9 +473,9 @@ header{
     bottom: -1px;
     transition: 0.75s ease;
 }
-#button_container button a:hover::after {
+#button_container  a:hover::after {
     width: 100%;
-}
+} */
 #backtop #btntop i:hover{
     background: none;
     font-size:30px;
@@ -393,15 +525,7 @@ header{
     animation-fill-mode: forwards;
 
 }
-.navbar2 #button_container{
-    animation-name: navbarbuttons;
-    animation-duration:1s;
-    animation-timing-function: ease-in;
-    animation-delay: 0s;
-    animation-iteration-count: 1;
-    animation-direction:alternate;
-    animation-fill-mode: forwards;
-}
+
     /* ------CAROUSEL------ */
 #carousel{
     max-width: 50%;
@@ -420,6 +544,7 @@ header{
     }
     
 }
+    /* ------About us------ */
    /* ------Grid------- */
 .container{
     display: flex;
@@ -653,22 +778,35 @@ form .submitbtn:hover{
 }
 
 /* Adjustments for smaller screens or minimized (resized) */
-@media (max-width: 992px) {
-    #button_container {
-        display: flex;
-        flex-direction: column;
-        height:200px;
+@media (min-width: 768px) {
+    .toggle-menu {
+        display: none;
     }
 
-    #button_container button {
-        width: 100%;
-        margin-top:20px;
-        margin-bottom: 25px;
+    .batn {
+        display: inline-block;
     }
 }
-nav #list{
-    color:red;
-    font-size: 30px;
-    
-    
+
+@media (max-width: 767px) {
+    .toggle-menu {
+        display: block;
+    }
+
+    .batn {
+        display: none;
+    }
 }
+#toggler1{
+    font-size:30px;
+    color:white;
+    display:flex;
+    padding:20px;
+}
+#toggler1:hover{
+    background-color:rgba(173, 216, 230, 0.345);
+    border-radius: 25px;
+    padding:20px;
+    transition:ease .5s;
+}
+

@@ -9,11 +9,18 @@ $(document).ready(function() {
             icon.removeClass('bi-moon-fill').addClass('bi-moon');
         }
     });
-
-    const buttonContainer = document.getElementById('button_container');
-    const checkbox = document.getElementById('check');
-    const submit = document.getElementById('submitbtn');
-
+    function toggleMainMenu() {
+        const mainMenu = document.querySelector('.mainmenu');
+        mainMenu.classList.toggle('show');
+    }
+    const buttonContainer = document.querySelector('.mainmenu');
+    // const checkbox = document.getElementById('check');
+    // const submit = document.getElementById('submitbtn');
+ 
+    function showSidebar(){
+        const sidebar = document.getElementById('listbar')
+        sidebar.style.display = "flex"
+    }
     $('#contactForm').submit(function(event) {
         event.preventDefault(); // prevents the user from not entering input
 
@@ -25,36 +32,33 @@ $(document).ready(function() {
         alert('Username: ' + username + '\nEmail: ' + email + '\nPhone: ' + phone + '\nMessage: ' + message);
     });
 
-    buttonContainer.addEventListener('transitionend', function(event) {
-        // changes the buttoncontainer accordingly if the window size changes
-        if (event.propertyName === 'flex-direction') {
-            checkWindowSize();
-        }
-    });
+ 
 
-    checkbox.addEventListener('change', function() {
-        // adds and removes the "show" from the class in the button
-        if (this.checked) {
-            buttonContainer.classList.add('show');
-        } else {
-            buttonContainer.classList.remove('show');
-        }
-    });
+    // window.addEventListener('resize', checkWindowSize);
 
-    window.addEventListener('resize', function() {
-        checkWindowSize();
-    });
+    // function checkWindowSize() {
+    //     if (window.innerWidth > 858) {
+    //         buttonContainer.classList.remove('column');
+    //         buttonContainer.style.flexDirection = 'row';
+    //     } else {
+    //         buttonContainer.classList.add('column');
+    //         buttonContainer.style.flexDirection = 'column';
+    //     }
+    // }
 
-    function checkWindowSize() {
-        // changes how the window works when we change the size, if the size is higher than 858pixels it removes the "column" from the class and adds a style row
-        if (window.innerHeight > 858) {
-            buttonContainer.classList.remove('column');
-            buttonContainer.style.flexDirection = 'row';
-        } else {
-            buttonContainer.classList.add('column');
-        }
-    }
+    // window.addEventListener('resize', function() {
+    //     checkWindowSize();
+    // });
 
+    // function checkWindowSize() {
+    //     if (window.innerWidth > 858) {
+    //         buttonContainer.classList.remove('column');
+    //         buttonContainer.style.flexDirection = 'row';
+    //     } else {
+    //         buttonContainer.classList.add('column');
+    //         buttonContainer.style.flexDirection = 'column';
+    //     }
+    // }
     // Scroll to top button
     var btntop = document.getElementById('btntop'); // the button that takes the user to the top of the page
     btntop.addEventListener('click', function() {
@@ -63,4 +67,5 @@ $(document).ready(function() {
             behavior: 'smooth' // smooth transition for the user
         });
     });
+  
 });

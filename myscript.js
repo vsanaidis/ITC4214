@@ -4,10 +4,25 @@ $(document).ready(function(){
         e.preventDefault();
         Addtable();
     });
+    document.getElementById('toggler1').addEventListener('click', function() {
+        showSidebar();
+    });
     
+    document.getElementById('detoggler').addEventListener('click', function() {
+        hideSidebar();
+    });
     $('#sortbyname').on('click', function() {
         sortTableByName();
     });
+    function showSidebar(){
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'flex'
+    }   
+    function hideSidebar(){
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'none'
+    }
+
 //my function that sorts the rows by the alphabetical order of the tasks the user inputs
     function sortTableByName() {
         var table = $('#table');
@@ -42,13 +57,7 @@ $(document).ready(function(){
 
     const buttonContainer = document.getElementById('button_container');
     const checkbox = document.getElementById('check');;
-//doesnt want to work... worked at first but then poof and nothing
-    // btn.forEach(btn => {
-    //     btn.addEventListener('click', () => {
-    //         document.querySelector('.btn_visit')?.classList.remove('btn_visit');
-    //         btn.classList.add('btn_visit');
-    //     });
-    // });
+
    //adds the rows to the table as intented by the exercise
     function Addtable(){    
         var task = $('input[type="text"]').val();
